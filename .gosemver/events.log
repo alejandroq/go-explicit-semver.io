@@ -1,2 +1,0 @@
-{"args":["xyz","123","src"],"level":"info","msg":"arguments","time":"2018-07-11T01:10:06+02:00"}
-{"bytes":49,"config":{"versioning":["xyz","123","src"],"templates":[]},"level":"info","msg":"wrote .gosemver/config.json file","time":"2018-07-11T01:10:06+02:00"}

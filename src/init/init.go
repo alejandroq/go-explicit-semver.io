@@ -12,8 +12,15 @@ const directoryName = ".gosemver"
 
 // Config for the application. Typically housed in the `.gosemver/config.json` file.
 type Config struct {
-	Versioning []string   `json:"versioning"`
+	Versioning []Artifact `json:"versioning"`
 	Templates  []Template `json:"templates"`
+}
+
+// Artifact that is being versioned
+// If directory, children need be `diff`d as per Patch releases
+type Artifact struct {
+	Source       string `json:"source"` // can derive a unique ID from source, as is expected to be unique.
+	GitTagMirror bool   `json:"primary"`
 }
 
 // Template input (template file) to output file
@@ -64,8 +71,18 @@ func Init(args []string) error {
 
 func createConfig(args []string) Config {
 	var c Config
-	for _, v := range args {
-		c.Versioning = append(c.Versioning, v)
+	for i, v := range args {
+		if i == 0 {
+			c.Versioning = append(c.Versioning, Artifact{
+				Source:       v,
+				GitTagMirror: true,
+			})
+		} else {
+			c.Versioning = append(c.Versioning, Artifact{
+				Source:       v,
+				GitTagMirror: false,
+			})
+		}
 	}
 	c.Templates = []Template{}
 	return c

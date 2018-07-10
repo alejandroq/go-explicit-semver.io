@@ -17,7 +17,7 @@ func init() {
 	Elog.Out = os.Stdout
 	Elog.Formatter = &log.JSONFormatter{}
 
-	file, err := os.OpenFile("./.gosemver/events.log", os.O_CREATE|os.O_WRONLY, 0666)
+	file, err := os.OpenFile("./.gosemver/events.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
 	if err == nil {
 
 		Elog.Out = file

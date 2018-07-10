@@ -33,3 +33,29 @@ gosemver increment <major|minor> <artifact-id> --suffix rc # for custom suffix
 gosemver increment <major|minor> <artifact-id> --rm-suffix # to remove suffix with addition
 gosemver checkout <artifact-id> <version> # checks out git tagged with the following version (read-only *no incrementing from here* - this is not Git)
 ```
+
+### Template Variables
+
+Templates will have access to the entire environment of Template variables found by using `gosemver versioning list`.
+
+If artifact source is "src":
+
+| ID     | Name  | Template Variable | Version | Git Tag |
+| ------ | ----- | ----------------- | ------- | ------- |
+| abc123 | `src` | {{ .SrcVersion }} | 0.0.1   | true    |
+
+
+If artifact source is "README.md":
+
+| ID     | Name        | Template Variable      | Version | Git Tag |
+| ------ | ----------- | ---------------------- | ------- | ------- |
+| xyz456 | `README.md` | {{ .ReadmeMdVersion }} | 0.0.1   | false   |
+
+
+If artifact source is "1234.md":
+
+| ID          | Name      | Template Variable | Version | Git Tag |
+| ----------- | --------- | ----------------- | ------- | ------- |
+| whythisname | `1234.md` | {{ .MdVersion }}  | 0.0.1   | false   |
+
+*The above tables are also ideas for the output of the `versioning list` command*

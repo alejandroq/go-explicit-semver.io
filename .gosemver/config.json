@@ -1,1 +1,13 @@
-{"versioning":["xyz","123","src"],"templates":[]}
+{
+    "versioning": [{
+        "source": "src",
+        "primary": true
+    }, {
+        "source": "README.md",
+        "primary": false
+    }, {
+        "source": "TODO.md",
+        "primary": false
+    }],
+    "templates": []
+}

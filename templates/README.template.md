@@ -8,12 +8,12 @@ _v{{ .SrcVersion }} Alejandro Quesada_
 
 Application that can manage the semantic versioning of an application via a ledger explicitly called by a user via the CLI. The tool does the following things:
 
-- Command line operations:
-  - Viewable History
-  - Initilizable configuration
-  - Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs
-  - Commands to increment Major, Minor or custom (rc, etc) versions for directories AND OR individual files (say wireframes, etc)
-- Git tagging (for which of the versioned artifacts? primary flag?)
+- [ ] Command line operations:
+  - [ ] Viewable History
+  - [x] Initilizable configuration
+  - [ ] Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs
+  - [ ] Commands to increment Major, Minor or custom (rc, etc) versions for directories AND OR individual files (say wireframes, etc)
+- [ ] Git tagging (need to decide how to do this when there are multiple versioned artifacts...)
 
 _For design ideas, view the [TODO.md](./TODO.md)_
 
@@ -46,8 +46,21 @@ Version {{ .SrcVersion }} example:
 
 ```json
 {
-  "versioning": ["src"],
-  "templates": ["docs/README.md.template"]
+  "versioning": [
+    {
+      "source": "src",
+      "primary": true
+    },
+    {
+      "source": "README.md",
+      "primary": false
+    },
+    {
+      "source": "TODO.md",
+      "primary": false
+    }
+  ],
+  "templates": []
 }
 ```
 
