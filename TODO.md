@@ -31,4 +31,5 @@ gosemver history <artifact-id> # artifact-id is an item in config versioning
 gosemver increment <major|minor> <artifact-id>
 gosemver increment <major|minor> <artifact-id> --suffix rc # for custom suffix
 gosemver increment <major|minor> <artifact-id> --rm-suffix # to remove suffix with addition
+gosemver checkout <artifact-id> <version> # checks out git tagged with the following version (read-only *no incrementing from here* - this is not Git)
 ```
