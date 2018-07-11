@@ -63,4 +63,4 @@ Version {{ .SrcVersion }} example:
 
 ## Artifacts
 
-A `.gosemver` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (by Git or another client) for consistency between developers.
+A `.gosemver` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (primariy usecases of today call for Git) for consistency between developers.
