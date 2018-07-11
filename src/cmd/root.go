@@ -14,11 +14,18 @@ var cfgFile string
 var RootCmd = &cobra.Command{
 	Use:   "go-explicit-semver",
 	Short: "Explicitly manage the semver of various files or directories",
-	Long: `Application that can manage the semantic versioning of an 
-	application via a ledger explicitly activated by a user`,
-	// Run: func(cmd *cobra.Command, args []string) {
-	// Patch releases (diff)
-	// },
+	Long: `
+Go-Explicit-Semver is an application that can manage the semantic versioning of an 
+application via a ledger explicitly mutated by a user
+`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("Checking for diffs...")
+		fmt.Println("Incrementing Patches for...")
+		fmt.Println("Complete :)")
+
+		// use go routines per
+		// Patch releases (diff)
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

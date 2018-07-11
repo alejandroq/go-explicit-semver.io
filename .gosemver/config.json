@@ -1,13 +1,4 @@
 {
-    "versioning": [{
-        "source": "src",
-        "primary": true
-    }, {
-        "source": "README.md",
-        "primary": false
-    }, {
-        "source": "TODO.md",
-        "primary": false
-    }],
+    "versioning": ["src", "README.md", "TODO.md"],
     "templates": []
 }
