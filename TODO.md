@@ -27,7 +27,7 @@ gosemver templates list # get list of templates
 gosemver template add <file> # append a new template
 gosemver template remove <id> # remove a template by ID
 gosemver history
-gosemver history <artifact-id> # artifact-id is an item in config versioning
+gosemver history <artifact-id> # artifact-id is an item in config versioning / consider pulling commit information per minor releases or an artifact?
 gosemver increment <major|minor> <artifact-id>
 gosemver increment <major|minor> <artifact-id> --suffix rc # for custom suffix
 gosemver increment <major|minor> <artifact-id> --rm-suffix # to remove suffix with addition
@@ -40,22 +40,30 @@ Templates will have access to the entire environment of Template variables found
 
 If artifact source is "src":
 
-| ID     | Name  | Template Variable | Version | Git Tag |
-| ------ | ----- | ----------------- | ------- | ------- |
-| abc123 | `src` | {{ .SrcVersion }} | 0.0.1   | true    |
+| ID     | Name  | Template Variable | Version |
+| ------ | ----- | ----------------- | ------- |
+| abc123 | `src` | {{ .SrcVersion }} | 0.0.1   |
 
 
 If artifact source is "README.md":
 
-| ID     | Name        | Template Variable      | Version | Git Tag |
-| ------ | ----------- | ---------------------- | ------- | ------- |
-| xyz456 | `README.md` | {{ .ReadmeMdVersion }} | 0.0.1   | false   |
+| ID     | Name        | Template Variable      | Version |
+| ------ | ----------- | ---------------------- | ------- |
+| xyz456 | `README.md` | {{ .ReadmeMdVersion }} | 0.0.1   |
 
 
 If artifact source is "1234.md":
 
-| ID          | Name      | Template Variable | Version | Git Tag |
-| ----------- | --------- | ----------------- | ------- | ------- |
-| whythisname | `1234.md` | {{ .MdVersion }}  | 0.0.1   | false   |
+| ID          | Name      | Template Variable | Version |
+| ----------- | --------- | ----------------- | ------- |
+| whythisname | `1234.md` | {{ .MdVersion }}  | 0.0.1   |
 
 *The above tables are also ideas for the output of the `versioning list` command*
+
+### Git Tagging
+
+If artifact source is "src": `src-0.0.1`
+
+If artifact source is "README.md": `README.md-0.0.1`
+
+Git tags point to Git commit and therefore once Go-Explicit-Semver has set a tag, you are able to return to it. A common usecase may be if a bug is reported in a specific version, this tool abstracts a bit of the Git kung-fu.
