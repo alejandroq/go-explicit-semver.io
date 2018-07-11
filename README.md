@@ -11,9 +11,10 @@ Application that can manage the semantic versioning of an application via a ledg
 - [ ] Command line operations:
   - [ ] Viewable History
   - [x] Initilizable configuration
-  - [ ] Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs
+  - [ ] Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs (ex. `gosemver`)
   - [ ] Commands to increment Major, Minor or custom (rc, etc) versions for directories AND OR individual files (say wireframes, etc)
-- [ ] Git tagging (need to decide how to do this when there are multiple versioned artifacts...)
+- [ ] Git tagging
+  - [ ] Git tag for each versioned artifact
 
 _For design ideas, view the [TODO.md](./TODO.md)_
 
@@ -25,10 +26,19 @@ This is not a versioning control system like Git. Simply a tool to allow a user 
 
 ## Future use cases in-mind
 
-- Editing and incrementing CloudFormation documents
-- Developing an iOS app
+- Infrastructure as Code
+  - Situation: When actively developing or maintaining an AWS CloudFormation document.
+  - Oppurtunity: Track vanity mutations to your Infrastructure as Code. If team A is running version 1.0.0 and you have added a CloudFront dashboard for 1.1.0, quickly verify that they require a pending change. If there is an error, the process of replicating team A's environment is simpler.
+- Mobile development
+  - Situation: Developing an iOS.
+  - Oppurtunity: Pushing changes to the app store with accurately maintained versions. Be able to more quickly alleviate user woes when their clients break on version "X" by having had explicitly maintained Git tags.
+- Swagger development
+  - Situation: You are defining your REST service with Swagger
+  - Oppurtunity: Save key strokes and accurately maintain your Swagger version with this tool. Edit the Swagger document's template and let this tool update version information. Deploy the Templates `output` artifact.
 - For versioning THIS tool
+  - Oppurtunity: To test the idea in creating the idea. Very organic development.
 - Versioning multiple documents for a project from: source code, design docs, etc
+  - Oppurtunity: I like the monorepo, so meeting the usecase is important to me. I occasinoaly like to keep non-code documents in the repository as well for XYZ reason.
 
 ### How will be handled by versioning where there are multiple authors
 
@@ -40,26 +50,13 @@ Variables for templates are: ...
 
 See [https://golang.org/pkg/html/template/](https://golang.org/pkg/html/template/).
 
-## `.gosemver/explicit-config.json`
+## Config with `.gosemver/explicit-config.json`
 
 Version {{ .SrcVersion }} example:
 
 ```json
 {
-  "versioning": [
-    {
-      "source": "src",
-      "primary": true
-    },
-    {
-      "source": "README.md",
-      "primary": false
-    },
-    {
-      "source": "TODO.md",
-      "primary": false
-    }
-  ],
+  "versioning": ["src", "README.md", "TODO.md"],
   "templates": []
 }
 ```
