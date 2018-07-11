@@ -40,7 +40,7 @@ Variables for templates are: ...
 
 See [https://golang.org/pkg/html/template/](https://golang.org/pkg/html/template/).
 
-## `.gosemver/explicit-config.json`
+## `.v/explicit-config.json`
 
 Version {{ .SrcVersion }} example:
 
@@ -66,4 +66,4 @@ Version {{ .SrcVersion }} example:
 
 ## Artifacts
 
-A `.gosemver` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (by Git or another client) for consistency between developers.
+A `.v` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (by Git or another client) for consistency between developers.

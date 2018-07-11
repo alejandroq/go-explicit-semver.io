@@ -11,7 +11,7 @@ Application that can manage the semantic versioning of an application via a ledg
 - [ ] Command line operations:
   - [ ] Viewable History
   - [x] Initilizable configuration
-  - [ ] Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs (ex. `gosemver`)
+  - [ ] Tool being incited will quickly scope opted child directories/files for Patch release versioning based on diffs (ex. `v`)
   - [ ] Commands to increment Major, Minor or custom (rc, etc) versions for directories AND OR individual files (say wireframes, etc)
 - [ ] Git tagging
   - [ ] Git tag for each versioned artifact
@@ -28,9 +28,9 @@ This is not a versioning control system like Git. Simply a tool to allow a user 
 
 - Infrastructure as Code
   - Situation: When actively developing or maintaining an AWS CloudFormation document.
-  - Oppurtunity: Track vanity mutations to your Infrastructure as Code. If team A is running version 1.0.0 and you have added a CloudFront dashboard for 1.1.0, quickly verify that they require a pending change. If there is an error, the process of replicating team A's environment is simpler.
+  - Oppurtunity: Track vanity mutations to your Infrastructure as Code. If team A is running version 1.0.0 and you have added a CloudFront dashboard for 1.1.0, quickly ascertain that they require a pending update. Or if there is an error, the process for a Cloud Engineer to replicate team A's infrastructure is simplified.
 - Mobile development
-  - Situation: Developing an iOS.
+  - Situation: Developing an iOS application.
   - Oppurtunity: Pushing changes to the app store with accurately maintained versions. Be able to more quickly alleviate user woes when their clients break on version "X" by having had explicitly maintained Git tags.
 - Swagger development
   - Situation: You are defining your REST service with Swagger
@@ -50,7 +50,7 @@ Variables for templates are: ...
 
 See [https://golang.org/pkg/html/template/](https://golang.org/pkg/html/template/).
 
-## Config with `.gosemver/explicit-config.json`
+## Config with `.v/explicit-config.json`
 
 Version {{ .SrcVersion }} example:
 
@@ -63,4 +63,4 @@ Version {{ .SrcVersion }} example:
 
 ## Artifacts
 
-A `.gosemver` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (primary usecases of today call for Git) for consistency between developers.
+A `.v` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (primary usecases of today call for Git) for consistency between developers.

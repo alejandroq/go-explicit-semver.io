@@ -8,9 +8,9 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const directoryName = ".gosemver"
+const directoryName = ".v"
 
-// Config for the application. Typically housed in the `.gosemver/config.json` file.
+// Config for the application. Typically housed in the `.v/config.json` file.
 type Config struct {
 	Versioning []Artifact `json:"versioning"`
 	Templates  []Template `json:"templates"`
@@ -26,7 +26,7 @@ type Template struct {
 	Output string `json:"output"`
 }
 
-// Init creates the `.gosemver` directory as well as it's accompanying files
+// Init creates the `.v` directory as well as it's accompanying files
 // supplemental arguments may be provided to initalize configuration
 func Init(args []string) error {
 	// TODO execute with go routines. Create "error" and "done" channel.
@@ -61,7 +61,7 @@ func Init(args []string) error {
 	log.Elog.WithFields(logrus.Fields{
 		"bytes":  n,
 		"config": config,
-	}).Info("wrote .gosemver/config.json file")
+	}).Info("wrote .v/config.json file")
 
 	return nil
 }

@@ -1,4 +1,4 @@
 {"args":["src","README.md","TODO.md"],"level":"info","msg":"arguments","time":"2018-07-11T02:10:54+02:00"}
-{"bytes":59,"config":{"versioning":["src","README.md","TODO.md"],"templates":[]},"level":"info","msg":"wrote .gosemver/config.json file","time":"2018-07-11T02:10:54+02:00"}
+{"bytes":59,"config":{"versioning":["src","README.md","TODO.md"],"templates":[]},"level":"info","msg":"wrote .v/config.json file","time":"2018-07-11T02:10:54+02:00"}
 {"args":["src","README.md","TODO.md"],"level":"info","msg":"arguments","time":"2018-07-11T02:11:03+02:00"}
-{"bytes":59,"config":{"versioning":["src","README.md","TODO.md"],"templates":[]},"level":"info","msg":"wrote .gosemver/config.json file","time":"2018-07-11T02:11:03+02:00"}
+{"bytes":59,"config":{"versioning":["src","README.md","TODO.md"],"templates":[]},"level":"info","msg":"wrote .v/config.json file","time":"2018-07-11T02:11:03+02:00"}

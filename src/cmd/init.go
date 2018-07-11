@@ -7,10 +7,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// initCmd initializes gosemver
+// initCmd initializes v
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Initialize gosemver",
+	Short: "Initialize v",
 	Long: `This subcommand will generate the necessary files to accurately 
 	maintain the semvers of your various files`,
 	Run: func(cmd *cobra.Command, args []string) {
