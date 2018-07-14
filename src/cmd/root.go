@@ -16,7 +16,7 @@ var RootCmd = &cobra.Command{
 	Short: "Explicitly manage the semver of various files or directories",
 	Long: `
 Go-Explicit-Semver is an application that can manage the semantic versioning of an 
-application via a ledger explicitly mutated by a user
+application via a ledger explicitly mutated by a user.
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Checking for diffs...")

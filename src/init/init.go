@@ -8,7 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const directoryName = ".v"
+const directoryName = ".semver"
 
 // Config for the application. Typically housed in the `.v/config.json` file.
 type Config struct {
@@ -58,10 +58,15 @@ func Init(args []string) error {
 	if err != nil {
 		return err
 	}
+	// TODO come up with a struct for io.Write events, etc
 	log.Elog.WithFields(logrus.Fields{
-		"bytes":  n,
-		"config": config,
-	}).Info("wrote .v/config.json file")
+		"bytes": n,
+		"file":  config,
+	}).Info("wrote " + f.Name() + " file")
+
+	msg := "Initialized vanilla go-explicit-semver in " + f.Name()
+	log.Elog.Info(msg)
+	log.Vlog.Info(msg) // print out a log to stdout
 
 	return nil
 }

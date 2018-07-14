@@ -4,6 +4,8 @@ _v{{ .SrcVersion }} Alejandro Quesada_
 
 **Very early work in progress. Feel free to contribute ideas!**
 
+> Don't boil the ocean
+
 ## Goals
 
 Application that can manage the semantic versioning of an application via a ledger explicitly called by a user via the CLI. The tool does the following things:
@@ -22,7 +24,7 @@ This application is meant to reduce the overhead of this particular task in a si
 
 ## What this is not
 
-This is not a versioning control system like Git. Simply a tool to allow a user to explicitly set a semantic version and have this information propogate via Git tags and documentation. The tool is smart enough to determine WHEN source files have changed for incrementing patch releases.
+This is not a versioning control system like Git. Simply a tool to allow a user to explicitly set a semantic version and have this information propogate via Git tags and documentation. The tool is smart enough to determine **WHEN** source files have changed for the incrementing of patch releases.
 
 ## Future use cases in-mind
 
@@ -50,7 +52,7 @@ Variables for templates are: ...
 
 See [https://golang.org/pkg/html/template/](https://golang.org/pkg/html/template/).
 
-## Config with `.v/explicit-config.json`
+## Config with `.semver/explicit-config.json`
 
 Version {{ .SrcVersion }} example:
 
@@ -63,4 +65,8 @@ Version {{ .SrcVersion }} example:
 
 ## Artifacts
 
-A `.v` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (primary usecases of today call for Git) for consistency between developers.
+A `.semver` directory that maintains various files pertaining to the state of the application. This directory is meant to be versioned (primary usecases of today call for Git) for consistency between developers.
+
+## Resources
+
+- (https://semver.org/)[https://semver.org/]
