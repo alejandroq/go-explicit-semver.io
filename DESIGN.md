@@ -22,10 +22,10 @@ semver version # get application version
 semver versioning list # get list of artifact-ids and current versions (in tabular form)
 semver versioning add <file|directory> # append new artifact to versioning list
 semver versioning add <file|directory> # append new artifact to versioning list
-semver versioning remove <id> # remove an artifact by ID (will not be removed from history or ledger)
-semver templates list # get list of templates
-semver template add <file> # append a new template
-semver template remove <id> # remove a template by ID
+semver versioning rm <id> # remove an artifact by ID (will not be removed from history or ledger)
+[ ] semver templates list # get list of templates
+[ ] semver template add -input <file> -output <file> # append a new template
+[ ] semver template rm -input <file> -output <file> # remove a template by ID
 semver history
 semver history <artifact-id> # artifact-id is an item in config versioning / consider pulling commit information per minor releases or an artifact?
 semver increment <major|minor> <artifact-id>
