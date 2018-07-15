@@ -3,26 +3,21 @@ package cmd
 import (
 	_init "github.com/alejandroq/go-explicit-semver.io/src/init"
 	"github.com/alejandroq/go-explicit-semver.io/src/log"
-	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
 // initCmd initializes v
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Initialize v",
+	Short: "Initialize semver",
 	Long: `This subcommand will generate the necessary files to accurately 
 	maintain the semvers of your various files`,
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Elog.WithFields(logrus.Fields{
-			"args": args,
-		}).Info("arguments")
-
 		err := _init.Init(args)
 		if err != nil {
-			log.Elog.WithFields(logrus.Fields{
+			log.Log("error", map[string]interface{}{
 				"err": err.Error(),
-			}).Error("error")
+			})
 		}
 	},
 }
