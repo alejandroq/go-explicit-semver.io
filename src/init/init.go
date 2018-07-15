@@ -2,15 +2,15 @@ package init
 
 import (
 	"encoding/json"
+	"errors"
 	"os"
 
 	"github.com/alejandroq/go-explicit-semver.io/src/log"
-	"github.com/sirupsen/logrus"
 )
 
 const directoryName = ".semver"
 
-// Config for the application. Typically housed in the `.v/config.json` file.
+// Config for the application. Typically housed in the `.semver/config.json` file.
 type Config struct {
 	Versioning []Artifact `json:"versioning"`
 	Templates  []Template `json:"templates"`
@@ -26,49 +26,66 @@ type Template struct {
 	Output string `json:"output"`
 }
 
-// Init creates the `.v` directory as well as it's accompanying files
+var (
+	errNotEnoughArguments = errors.New("please provide a list of files/directories to maintain a semantic version for")
+)
+
+// Init creates the `.semver` directory as well as it's accompanying files
 // supplemental arguments may be provided to initalize configuration
 func Init(args []string) error {
-	// TODO execute with go routines. Create "error" and "done" channel.
-	// Any meets of "error" in a switch case, will cause the application
-	// to logout and error.
+	// Initializing goroutine channels
+	errs := make(chan error)
+	done := make(chan struct{}, 1)
+
+	if len(args) == 0 {
+		return errNotEnoughArguments
+	}
 
 	if err := createDirIfNotExist(directoryName); err != nil {
 		return err
 	}
 
-	_, err := os.OpenFile(directoryName+"/ledger.json", os.O_RDONLY|os.O_CREATE, 0666)
-	if err != nil {
+	go func() {
+		_, err := os.OpenFile(directoryName+"/ledger.json", os.O_RDONLY|os.O_CREATE, 0666)
+		if err != nil {
+			errs <- err
+		}
+	}()
+
+	go func() {
+		f, err := os.OpenFile(directoryName+"/config.json", os.O_CREATE|os.O_WRONLY, 0666)
+		if err != nil {
+			errs <- err
+		}
+		defer f.Close()
+
+		config := createConfig(args)
+		jsonConfig, err := json.Marshal(config)
+		if err != nil {
+			errs <- err
+		}
+
+		n, err := f.Write(jsonConfig)
+		if err != nil {
+			errs <- err
+		}
+
+		log.Log("wrote "+f.Name()+" file", map[string]interface{}{
+			"bytes": n,
+			"file":  config,
+		}) // log file creation
+		log.Log("initialized vanilla go-explicit-semver in "+f.Name(), make(map[string]interface{})) // log command completion
+
+		// indicate operation is complete
+		done <- struct{}{}
+	}()
+
+	select {
+	case <-done:
+		return nil
+	case err := <-errs:
 		return err
 	}
-
-	f, err := os.OpenFile(directoryName+"/config.json", os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	config := createConfig(args)
-	jsonConfig, err := json.Marshal(config)
-	if err != nil {
-		return err
-	}
-
-	n, err := f.Write(jsonConfig)
-	if err != nil {
-		return err
-	}
-	// TODO come up with a struct for io.Write events, etc
-	log.Elog.WithFields(logrus.Fields{
-		"bytes": n,
-		"file":  config,
-	}).Info("wrote " + f.Name() + " file")
-
-	msg := "Initialized vanilla go-explicit-semver in " + f.Name()
-	log.Elog.Info(msg)
-	log.Vlog.Info(msg) // print out a log to stdout
-
-	return nil
 }
 
 func createConfig(args []string) Config {
