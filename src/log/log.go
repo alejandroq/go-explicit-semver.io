@@ -1,25 +1,44 @@
 package log
 
 import (
+	"flag"
 	"os"
 
-	log "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
-// Vlog verbosely logs to stdout
-var Vlog = log.New()
+const directoryName = ".semver"
 
-// Elog logs events to explicit-events.log
-var Elog = log.New()
+var verbose = flag.Bool("v", false, "verbose logging")
+
+// vlog verbosely logs to stdout
+var vlog = logrus.New()
+
+// elog logs events to events.log
+var elog = logrus.New()
 
 func init() {
-	Vlog.Out = os.Stdout
-	Elog.Out = os.Stdout
-	Elog.Formatter = &log.JSONFormatter{}
+	// parse for verbose
+	flag.Parse()
 
-	file, err := os.OpenFile("./.v/events.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+	vlog.Out = os.Stdout
+	elog.Out = os.Stderr
+	elog.Formatter = &logrus.JSONFormatter{}
+
+	file, err := os.OpenFile("./"+directoryName+"/events.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
 	if err == nil {
-
-		Elog.Out = file
+		elog.Out = file
 	}
+}
+
+func isVerbose() bool {
+	return *verbose
+}
+
+// Log contents
+func Log(information string, fields map[string]interface{}) {
+	if isVerbose() {
+		vlog.WithFields(fields).Info(information)
+	}
+	elog.WithFields(fields).Info(information)
 }
