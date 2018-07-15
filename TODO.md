@@ -32,7 +32,7 @@ semver increment <major|minor> <artifact-id>
 semver increment <major|minor> <artifact-id> --suffix rc # for custom suffix
 semver increment <major|minor> <artifact-id> --rm-suffix # to remove suffix with addition
 semver checkout <artifact-id> <version> # checks out git tagged with the following version (read-only *no incrementing from here* - this is not Git)
-# go generate with -ldflags?
+semver version <file|directory> # output 1.0.132423 - etc; go generate with -ldflags argument?
 ```
 
 ### Template Variables

@@ -41,6 +41,7 @@ This is not a versioning control system like Git. Simply a tool to allow a user 
   - Oppurtunity: To test the idea in creating the idea. Very organic development.
 - Versioning multiple documents for a project from: source code, design docs, etc
   - Oppurtunity: I like the monorepo, so meeting the usecase is important to me. I occasinoaly like to keep non-code documents in the repository as well for XYZ reason.
+- Function as an I/O argument for `-ldflag` during a `go build`. Similar to Git hash behaviors.
 
 ### How will be handled by versioning where there are multiple authors
 
