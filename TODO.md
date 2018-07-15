@@ -32,6 +32,7 @@ semver increment <major|minor> <artifact-id>
 semver increment <major|minor> <artifact-id> --suffix rc # for custom suffix
 semver increment <major|minor> <artifact-id> --rm-suffix # to remove suffix with addition
 semver checkout <artifact-id> <version> # checks out git tagged with the following version (read-only *no incrementing from here* - this is not Git)
+# go generate with -ldflags?
 ```
 
 ### Template Variables
@@ -67,3 +68,7 @@ If artifact source is "src": `src-0.0.1`
 If artifact source is "README.md": `README.md-0.0.1`
 
 Git tags point to Git commit and therefore once Go-Explicit-Semver has set a tag, you are able to return to it. A common usecase may be if a bug is reported in a specific version, this tool abstracts a bit of the Git kung-fu.
+
+### Resources
+
+- (https://blog.carlmjohnson.net/post/2016-11-27-how-to-use-go-generate/)[https://blog.carlmjohnson.net/post/2016-11-27-how-to-use-go-generate/]

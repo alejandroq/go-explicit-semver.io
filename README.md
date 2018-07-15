@@ -44,7 +44,7 @@ This is not a versioning control system like Git. Simply a tool to allow a user 
 
 ### How will be handled by versioning where there are multiple authors
 
-... tbd guid ...
+... tbd guid ... Use a simple list
 
 ## Templating system
 
