@@ -1,2 +1,0 @@
-{"bytes":49,"file":{"versioning":["README.md","src"],"templates":[]},"level":"info","msg":"wrote .semver/config.json file","time":"2018-07-15T12:09:18+02:00"}
-{"level":"info","msg":"initialized vanilla go-explicit-semver in .semver/config.json","time":"2018-07-15T12:09:18+02:00"}
