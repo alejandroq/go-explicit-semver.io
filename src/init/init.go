@@ -26,6 +26,7 @@ type Template struct {
 	Output string `json:"output"`
 }
 
+// Error arguments
 var (
 	errNotEnoughArguments = errors.New("please provide a list of files/directories to maintain a semantic version for")
 )
