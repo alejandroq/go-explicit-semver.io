@@ -17,7 +17,7 @@ The `.semver` directory:
 ### CLI Design
 
 ```sh
-semver init <list of files directories for quick add to versioning> # i.e. `v init src tests xyz.wireframe`
+[x] semver init <list of files directories for quick add to versioning> # i.e. `v init src tests xyz.wireframe`
 semver version # get application version
 semver versioning list # get list of artifact-ids and current versions (in tabular form)
 semver versioning add <file|directory> # append new artifact to versioning list
