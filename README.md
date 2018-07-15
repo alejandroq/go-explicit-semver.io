@@ -70,4 +70,4 @@ A `.semver` directory that maintains various files pertaining to the state of th
 
 ## Resources
 
-- (https://semver.org/)[https://semver.org/]
+- [https://semver.org/](https://semver.org/)
